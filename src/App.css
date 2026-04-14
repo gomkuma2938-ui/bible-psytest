@@ -292,4 +292,35 @@ body {
     font-size: 1.8rem;
     font-weight: normal;
     cursor: pointer;
+    margin-top: 0; /* 위에서 gap으로 조절하므로 마진 제거 */
+}
+
+/* 결과 페이지 버튼 레이아웃 */
+.result-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* 이미지로 저장 버튼 (연노랑) */
+.save-btn {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--button-color) !important; /* #feefc5 */
+    color: var(--text-main) !important;
+    border: none;
+    border-radius: 15px;
+    font-family: 'Gyeombalbal', sans-serif !important;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(0.95);
 }
