@@ -136,8 +136,7 @@ body {
 .ans-btn {
     width: 100%;
     padding: 20px;
-    font-size: 2.5rem;
-    background-color: var(--button-color) !important; /* 노란색 */
+    background-color: var(--button-color) !important;
     color: var(--text-main);
     border: none !important;
     border-radius: 15px;
@@ -147,9 +146,10 @@ body {
     word-break: keep-all;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 
-    /* ⬇️ 여기에 멱살 잡고 폰트 입힙니다 ⬇️ */
+    /* ⬇️ [중요] 여기에 !important를 붙여서 다른 설정을 다 무시하게 만듭니다 ⬇️ */
     font-family: 'GangwonEducationSaeum', sans-serif !important; 
-    font-weight: normal !important; /* 굵게 안 나오게 */
+    font-size: 2.2rem !important; /* 2.5rem은 너무 클 수 있으니 일단 2.2로 찔러보세요 */
+    font-weight: normal !important;
 }
 
 .ans-btn:hover {
