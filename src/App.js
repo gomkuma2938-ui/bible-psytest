@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import mainImg from './images/main.png';
+// import mainImg from './images/main.png';  <-- 이 줄은 이제 지우세요!
 import surveyData from './data/questions.json';
 import resultsData from './data/results.json';
 import './App.css';
 
 function App() {
-  // 1. 메인 화면 시작 여부를 관리할 상태 추가
   const [isStarted, setIsStarted] = useState(false);
   const [step, setStep] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
@@ -42,7 +41,7 @@ function App() {
     return resultsData[winnerKey];
   };
 
-  // 결과 화면 로직 (변경 없음)
+  // 1. 결과 화면
   if (showResult) {
     const result = calculateResult();
     return (
@@ -58,10 +57,9 @@ function App() {
         </div>
 
         <div className="result-image">
-          {/* src 폴더 이미지는 import로, public은 경로로 쓰지만 
-              이미지 폴더 관리를 위해 통일성을 유지하는게 좋습니다 */}
+          {/* public/images에 있는 인물 이미지를 불러옵니다 */}
           <img 
-            src={`/images/${result.id}.png`} 
+            src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
             alt={result.id} 
             onError={(e) => e.target.style.display='none'} 
           />
@@ -101,24 +99,23 @@ function App() {
     );
   }
 
-  // 2. 메인 화면 렌더링 (시작 안 했을 때)
+  // 2. 메인 화면 (public/images/main.png 사용)
   if (!isStarted) {
-      return (
-        <div className="container main-page">
-          <div className="main-content">
-            {/* 세로가 짧은 이미지이므로 'banner' 스타일 적용 */}
-            <img 
-              src={mainImg} 
-              alt="성경 인물 테스트" 
-              className="main-banner-horizontal" 
-            />
-            <button className="start-btn" onClick={() => setIsStarted(true)}>
-              테스트 시작하기
-            </button>
-          </div>
+    return (
+      <div className="container main-page">
+        <div className="main-content">
+          <img 
+            src={process.env.PUBLIC_URL + '/images/main.png'} 
+            alt="성경 인물 테스트" 
+            className="main-banner-horizontal" 
+          />
+          <button className="start-btn" onClick={() => setIsStarted(true)}>
+            테스트 시작하기
+          </button>
         </div>
-      );
-    }
+      </div>
+    );
+  }
 
   // 3. 테스트 진행 화면
   const currentQ = surveyData.questions[step];
@@ -133,7 +130,6 @@ function App() {
       
       <div className="question-content">
         <span className="question-number">Q{currentQ.id}</span>
-        {/* 문항 내용이 들어갈 곳이 필요할 것 같아 추가했습니다 */}
         <p className="question-text">{currentQ.question}</p> 
         <div className="answer-buttons">
           <button className="ans-btn" onClick={() => handleAnswer('A')}>
