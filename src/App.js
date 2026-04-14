@@ -64,15 +64,16 @@ const calculateResult = () => {
     return mainResult;
   };
 
-  const saveAsImage = async () => {
-    const target = document.querySelector(".result-page"); // 결과 영역 선택
+const saveAsImage = async () => {
+    // 🚀 전체 페이지가 아니라 'capture-area' 아이디를 가진 영역만 찾습니다.
+    const target = document.getElementById("capture-area"); 
     if (!target) return;
   
     try {
       const canvas = await html2canvas(target, {
-        useCORS: true, // 외부 이미지(결과 캐릭터 등) 허용
-        backgroundColor: "#fbf9f2", // 아이보리 배경색 강제 지정
-        scale: 2, // 고해상도 저장을 위해 2배 확대
+        useCORS: true,
+        backgroundColor: "#fbf9f2", // 배경색 강제 지정
+        scale: 2, // 고해상도
       });
   
       const image = canvas.toDataURL("image/jpeg", 0.9);
@@ -88,7 +89,6 @@ const calculateResult = () => {
   
 // 1. 결과 화면
   if (showResult) {
-    // 동점자 계산 로직
     const scores = { paul: 0, timothy: 0, hannah: 0, nehemiah: 0, david: 0, barnabas: 0, abraham: 0, elijah: 0, ezra: 0, tabitha: 0 };
     userAnswers.forEach((choice, index) => {
       const type = surveyData.scoreMap[`${index + 1}${choice}`];
@@ -97,13 +97,12 @@ const calculateResult = () => {
     const maxScore = Math.max(...Object.values(scores));
     const winners = Object.keys(scores).filter(key => scores[key] === maxScore);
     
-    // 현재 보고 있는 인물 데이터
     const result = resultsData[viewId || winners[0]];
     const handleRetry = () => window.location.reload();
 
     return (
       <div className="container result-page">
-        {/* 🚀 동점자 전환 탭 (기존 기능 유지) */}
+        {/* 🚀 동점자 전환 탭은 이미지에 저장되지 않도록 캡처 영역 밖에 둡니다 */}
         {winners.length > 1 && (
           <div className="winner-tabs">
             <p className="tab-guide">공동 1위 성향이 있어요! 클릭해서 확인해보세요.</p>
@@ -121,52 +120,49 @@ const calculateResult = () => {
           </div>
         )}
 
-        <div className="result-header">
-          {/* 1. 타입 (main-quote 크기로 키움) */}
-          <p className="sub-type-label">{result.type}</p> 
-          
-          {/* 2. 인물 이름 (타입보다 약간 더 크게) */}
-          <h2 className="result-person-name">{result.personName}</h2>
-
-          {/* 3. 인용구 (Gyeombalbal 폰트 적용 및 크기 축소) */}
-          <h1 className="main-quote">"{result.quote}"</h1>
-        </div>
-
-        <div className="result-image">
-          <img src={process.env.PUBLIC_URL + `/images/${result.image}`} alt={result.id} />
-        </div>
-
-        {/* 4. 메인 설명 (박스 제거, 배경에 바로 띄움) */}
-        <div className="main-desc-container">
-          <p className="main-desc-text">{result.desc}</p>
-        </div>
-
-        {/* 5. 강점 (설명과 퍼슨 박스 사이) */}
-        <div className="strengths-section">
-          <span className="strengths-label">강점</span>
-          <span className="strengths-content">{result.strengths}</span>
-        </div>
-
-        {/* 6. 퍼슨 박스 (네이버 블로그 꺽쇠 스타일) */}
-        <div className="person-quote-box">
-          <span className="bracket-open">『</span>
-          <p className="person-desc-text">{result.personDesc}</p>
-          <span className="bracket-close">』</span>
-        </div>
-
-        <div className="info-grid">
-          <div className="info-card feature-card">
-            <h4>당신의 특징</h4>
-            <ul>{result.features.map((item, i) => <li key={i}>{item}</li>)}</ul>
+        {/* 📸 여기부터 캡처 영역 시작 (id="capture-area") */}
+        <div id="capture-area" style={{ backgroundColor: 'var(--bg-color)', padding: '30px 10px' }}>
+          <div className="result-header">
+            <p className="sub-type-label">{result.type}</p> 
+            <h2 className="result-person-name">{result.personName}</h2>
+            <h1 className="main-quote">"{result.quote}"</h1>
           </div>
-          <div className="info-card warning-card">
-            <h4>주의할 점:</h4>
-            <ul>{result.warnings.map((item, i) => <li key={i}>{item}</li>)}</ul>
+
+          <div className="result-image">
+            <img src={process.env.PUBLIC_URL + `/images/${result.image}`} alt={result.id} />
           </div>
+
+          <div className="main-desc-container">
+            <p className="main-desc-text">{result.desc}</p>
+          </div>
+
+          <div className="strengths-section">
+            <span className="strengths-label">강점</span>
+            <span className="strengths-content">{result.strengths}</span>
+          </div>
+
+          <div className="person-quote-box">
+            <span className="bracket-open">『</span>
+            <p className="person-desc-text">{result.personDesc}</p>
+            <span className="bracket-close">』</span>
+          </div>
+
+          <div className="info-grid">
+            <div className="info-card feature-card">
+              <h4>당신의 특징</h4>
+              <ul>{result.features.map((item, i) => <li key={i}>{item}</li>)}</ul>
+            </div>
+            <div className="info-card warning-card">
+              <h4>주의할 점:</h4>
+              <ul>{result.warnings.map((item, i) => <li key={i}>{item}</li>)}</ul>
+            </div>
+          </div>
+
+          <div className="bible-verse-footer"><p>{result.verse}</p></div>
         </div>
+        {/* 📸 여기까지 캡처 영역 끝 */}
 
-        <div className="bible-verse-footer"><p>{result.verse}</p></div>
-
+        {/* 🚀 버튼 그룹 (저장되지 않음) */}
         <div className="result-actions">
             <button className="save-btn" onClick={saveAsImage}>이미지로 저장</button>
             <button className="retry-btn" onClick={handleRetry}>다시하기</button>
