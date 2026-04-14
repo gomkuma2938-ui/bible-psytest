@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import mainImg from './images/main.png';  <-- 이 줄은 이제 지우세요!
 import surveyData from './data/questions.json';
 import resultsData from './data/results.json';
 import './App.css';
