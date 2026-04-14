@@ -116,14 +116,6 @@ body {
     margin-bottom: 30px; 
 }
 
-/* 질문 텍스트 */
-.question-text {
-    font-family: 'GangwonEducationSaeum', sans-serif;
-    font-size: 2.8rem;
-    line-height: 1.4;
-    margin-bottom: 40px;
-}
-
 /* 2. 질문 선택 버튼 세트 */
 .answer-buttons {
     width: 100%;
