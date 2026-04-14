@@ -90,24 +90,36 @@ body {
 }
 
 /* --- 테스트 페이지 --- */
+
+/* 테스트 페이지 상단 미니 배너 */
+.test-top-banner {
+    width: 100%;
+    max-width: 150px; /* 시작 페이지 이미지보다 훨씬 작게 조절 */
+    height: auto;
+    margin-bottom: 20px; /* 질문 숫자(Q1)와의 간격 */
+    display: block;
+    opacity: 0.8; /* 살짝 투명하게 해서 질문에 집중하게 할 수도 있음 (선택) */
+}
+
+/* 이미지 추가로 인해 전체가 아래로 밀릴 수 있으므로 패딩 조절 */
 .test-page {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 위아래 정중앙으로 */
+    justify-content: flex-start; /* 상단부터 차례대로 배치 */
     align-items: center;
     min-height: 100vh;
-    background-color: var(--bg-color);
-    padding: 20px; /* 여백을 조금 줄여서 공간 확보 */
+    padding: 20px; /* 위아래 여백을 적절히 줄임 */
 }
 
+/* 질문 컨텐츠 박스 정렬 */
 .question-content {
     width: 100%;
     max-width: 400px;
-    height: auto !important; /* 높이 제한 해제 */
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 
 .question-number {
     font-size: 2.5rem;
