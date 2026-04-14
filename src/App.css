@@ -252,23 +252,25 @@ body {
 
 /* 🚀 2. 타이포그래피 (크기 및 폰트 변경) */
 .sub-type-label {
-    font-size: 1.8rem !important; /* 기존 main-quote급 크기 */
+    font-size: 1.5rem !important; /* 기존 main-quote급 크기 */
     color: var(--primary-color);
     font-weight: 800;
+    margin: 0 !important; 
     margin-bottom: 8px;
     display: block;
 }
 
 .result-person-name {
-    font-size: 3.2rem !important; /* 타입보다 더 크게 */
+    font-size: 2.3rem !important; /* 타입보다 더 크게 */
     font-weight: 900;
+    margin: 0 !important; 
     margin-bottom: 15px;
     color: #222;
 }
 
 .main-quote {
     font-family: 'Gyeombalbal', sans-serif !important;
-    font-size: 1.6rem !important; /* 크기 줄임 */
+    font-size: 1.3rem !important; /* 크기 줄임 */
     font-weight: normal;
     color: #666;
     margin-bottom: 40px;
@@ -287,7 +289,7 @@ body {
 /* 🚀 4. 메인 설명 (박스 제거) */
 .main-desc-container {
     padding: 0 10px;
-    margin-bottom: 45px;
+    margin-bottom: 20px;
     text-align: center;
 }
 .main-desc-text {
@@ -304,7 +306,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin-bottom: 45px;
+    margin-bottom: 40px;
     padding: 20px;
     background-color: #ffffff;
     border-radius: 15px;
@@ -326,26 +328,35 @@ body {
 /* 🚀 6. 퍼슨 박스 (네이버 블로그 꺽쇠 스타일) */
 .person-quote-box {
     position: relative;
-    padding: 50px 30px;
-    margin-bottom: 60px;
+    padding: 40px 30px;
+    margin-bottom: 40px;
     text-align: center;
 }
+
+/* 왼쪽 상단 코너 선 */
 .bracket-open {
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 4rem;
-    color: #e0e0e0;
-    line-height: 1;
+    width: 30px;  /* 선 길이 */
+    height: 30px; /* 선 높이 */
+    border-top: 3px solid #ddd;  /* 위쪽 선 */
+    border-left: 3px solid #ddd; /* 왼쪽 선 */
+    font-size: 0; /* 기존 『 기호는 안 보이게 처리 */
 }
+
+/* 오른쪽 하단 코너 선 */
 .bracket-close {
     position: absolute;
     bottom: 0;
     right: 0;
-    font-size: 4rem;
-    color: #e0e0e0;
-    line-height: 1;
+    width: 30px;
+    height: 30px;
+    border-bottom: 3px solid #ddd; /* 아래쪽 선 */
+    border-right: 3px solid #ddd;  /* 오른쪽 선 */
+    font-size: 0; /* 기존 』 기호는 안 보이게 처리 */
 }
+
 .person-desc-text {
     font-size: 1.05rem;
     line-height: 1.7;
@@ -359,7 +370,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 .info-card {
     text-align: left;
@@ -390,7 +401,7 @@ body {
 
 /* 하단 성경구절 */
 .bible-verse-footer {
-    margin: 60px 0;
+    margin: 20px 0 0 0;
     padding: 30px 20px;
     border-top: 1px solid #eee;
     font-style: italic;
