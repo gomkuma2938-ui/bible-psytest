@@ -29,6 +29,49 @@ body {
   box-sizing: border-box;
 }
 
+
+/* --- 메인 페이지 --- */
+.main-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #ffffff; /* 이미지 배경색과 맞춰주세요 */
+}
+
+.main-content {
+  width: 100%;
+  max-width: 600px; /* 너무 퍼지지 않게 잡아줌 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.main-banner-horizontal {
+  width: 100%;
+  height: auto;
+  /* 세로가 짧으므로 여백을 조금 더 줘서 시선을 모아줍니다 */
+  margin-top: -50px; 
+  margin-bottom: 40px;
+  object-fit: contain;
+}
+
+.start-btn {
+  width: 80%; /* 모바일에서 누르기 편하게 */
+  max-width: 300px;
+  padding: 18px 0;
+  background-color: #2d3436; /* 예시 색상 */
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
 /* --- 테스트 페이지 --- */
 .test-page {
   justify-content: center;
