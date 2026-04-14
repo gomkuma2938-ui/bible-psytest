@@ -168,7 +168,7 @@ body {
 
 /* 1. 버튼을 누르는 '찰나'의 피드백 (필수) */
 .ans-btn:active {
-    background-color: #f7d794 !important; /* 클릭 시 약간 더 진한 노랑/주황색으로 변경 */
+    background-color: var(--primary-color) !important;
     transform: scale(0.98); /* 버튼이 아주 살짝 눌리는 느낌 */
     box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); /* 안쪽으로 그림자가 생기며 눌린 느낌 강조 */
     transition: 0.1s;
