@@ -9,25 +9,14 @@
     font-display: swap;
 }
 
+
 :root {
   --primary-color: #fd9f28; /* 진행바 색상 변경 */
   --bg-color: #fbf9f2;      /* 전체 배경색 변경 */
   --button-color: #feefc5;  /* 버튼 색상 */
-  /* 나머지 기존 변수 유지 */
-}
-
-body {
-  background-color: var(--bg-color);
-  font-family: 'Pretendard', sans-serif; /* 기본은 프리텐다드 */
-}
-
-:root {
-  --primary-color: #4a90e2;
-  --bg-color: #f5f7f9;
   --card-bg: #ffffff;
   --text-main: #333333;
   --text-sub: #666666;
-  --border-color: #eeeeee;
   --accent-red: #e24a4a;
 }
 
