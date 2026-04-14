@@ -134,32 +134,35 @@ body {
 }
 
 .ans-btn {
-    width: 100%;
-    /* 1. 높이를 고정(height)하지 말고 최소 높이만 지정하세요 */
-    min-height: 80px !important; 
-    height: auto !important; /* 글씨가 두 줄이 되면 자동으로 늘어나게 함 */
-    
-    /* 2. 여백을 충분히 주어 글씨가 숨 쉴 공간을 만듭니다 */
-    padding: 20px 15px !important;
-    
+    /* [기존 유지] 디자인 스타일 */
     background-color: var(--button-color) !important;
     color: var(--text-main) !important;
     border: none !important;
     border-radius: 15px !important;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-
-    /* 3. 폰트 설정 (두 줄 수용 가능하도록 line-height 조절) */
     font-family: 'GangwonEducationSaeum', sans-serif !important;
-    font-size: 1.8rem !important; /* 일단 2.8rem으로 시작해서 조절해보세요 */
-    line-height: 1.2 !important; /* 줄 간격이 너무 넓으면 두 줄일 때 안 예쁩니다 */
-    word-break: keep-all; /* 단어 단위로 예쁘게 줄바꿈 */
+    
+    /* [수정] 너비와 높이 설정 */
+    width: 100%;
+    min-height: 100px !important; /* 글자가 커지므로 최소 높이를 살짝 키움 */
+    height: auto !important;      /* 글자가 두 줄이 되면 자동으로 늘어남 */
+    padding: 20px 15px !important;
 
-    /* 4. 중앙 정렬 유지 */
+    /* [핵심 수정] 글자 크기 및 줄바꿈 관련 */
+    font-size: 2.8rem !important;  /* 1.8rem에서 과감하게 키움 */
+    line-height: 1.2 !important;   /* 줄 간격 (폰트 특성에 맞춰 조절) */
+    word-break: keep-all !important; /* 단어 단위 줄바꿈 */
+    white-space: normal !important;  /* 줄바꿈 강제 허용 */
+
+    /* [기존 유지] 정렬 설정 */
     display: flex !important;
     align-items: center;
     justify-content: center;
     text-align: center;
+    
+    /* [기존 유지] 효과 */
+    transition: all 0.2s;
 }
 
 .ans-btn:hover {
