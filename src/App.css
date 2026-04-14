@@ -86,43 +86,44 @@ body {
 .test-page {
     display: flex;
     flex-direction: column;
-    /* justification을 변경해서 위아래로 찢지 않고 가운데로 모읍니다 */
-    justify-content: center; 
+    justify-content: center; /* 수직 중앙 정렬 */
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
     background-color: var(--bg-color);
+    padding: 20px;
 }
 
 .question-content {
-    text-align: center;
-    /* 위아래 여백을 줘서 가운데로 몰아줍니다 */
-    margin-top: auto; 
-    margin-bottom: auto; 
     width: 100%;
-    max-width: 460px; /* 너무 퍼지지 않게 잡아줌 */
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .question-number {
     font-size: 1.2rem;
     font-weight: 800;
     color: var(--primary-color);
-    display: block;
-    margin-bottom: 20px;
+    margin-bottom: 30px; 
 }
 
+/* 질문 텍스트 */
 .question-text {
-    font-family: 'GangwonEducationSaeum', sans-serif; /* 폰트 변경 */
-    font-size: 2.2rem; /* 얇은 폰트라 시원하게 키웠습니다 */
+    font-family: 'GangwonEducationSaeum', sans-serif;
+    font-size: 2.2rem;
     line-height: 1.4;
-    word-break: keep-all;
     margin-bottom: 40px;
 }
 
+/* 2. 질문 선택 버튼 세트 */
 .answer-buttons {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
+    margin-bottom: 50px; /* 버튼과 진행바 사이 간격 50px */
 }
 
 .ans-btn {
@@ -149,36 +150,28 @@ body {
     transform: translateY(-2px);
 }
 
-/* 하단 진행바 섹션 */
+/* 3. 진행바 (버튼 바로 아래 배치) */
 .progress-container {
-    /* order 걷어내고, .test-page에서 마진으로 하단 배치 */
-    margin-top: 50px; 
-    margin-bottom: 20px;
-    width: 90%; /* 화면 꽉 차게 */
-    max-width: 400px;
+    width: 100%;
     height: 10px;
-    background-color: #e0e0e0; /* 연회색 배경 */
+    background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
+    margin-bottom: 10px; /* 숫자와의 간격 */
 }
 
 .progress-bar {
-    /* ⬇️ 핵심: App.js의 style={{ width: ... }} 가 먹히려면 
-       CSS의 width가 기본으로 선언되어 있어야 합니다! */
-    width: 0%; /* 기본값 0 */
-    height: 100%; /* 게이지 높이 가득 */
-    background-color: var(--primary-color) !important; /* 주황색 강제 적용 */
-    transition: width 0.3s ease-in-out; /* 부드럽게 진행 */
+    width: 0%; /* App.js에서 조절됨 */
+    height: 100%;
+    background-color: var(--primary-color) !important;
+    transition: width 0.3s ease;
 }
 
 .step-indicator {
-    order: 3;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    text-align: center;
-    color: var(--text-sub);
     font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-sub);
+    margin: 0;
 }
 
 /* --- 결과 페이지 (기존 스타일 보존) --- */
