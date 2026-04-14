@@ -103,21 +103,22 @@ function App() {
 
   // 2. 메인 화면 렌더링 (시작 안 했을 때)
   if (!isStarted) {
-    return (
-      <div className="container main-page">
-        <div className="main-content">
-          <img 
-            src={mainImg} 
-            alt="성경 인물 테스트" 
-            className="main-banner" 
-          />
-          <button className="start-btn" onClick={() => setIsStarted(true)}>
-            테스트 시작하기
-          </button>
+      return (
+        <div className="container main-page">
+          <div className="main-content">
+            {/* 세로가 짧은 이미지이므로 'banner' 스타일 적용 */}
+            <img 
+              src={mainImg} 
+              alt="성경 인물 테스트" 
+              className="main-banner-horizontal" 
+            />
+            <button className="start-btn" onClick={() => setIsStarted(true)}>
+              테스트 시작하기
+            </button>
+          </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
   // 3. 테스트 진행 화면
   const currentQ = surveyData.questions[step];
