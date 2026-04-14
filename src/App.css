@@ -94,7 +94,7 @@ body {
 /* 테스트 페이지 상단 미니 배너 */
 .test-top-banner {
     width: 100%;
-    max-width: 150px; /* 시작 페이지 이미지보다 훨씬 작게 조절 */
+    max-width: 200px; /* 시작 페이지 이미지보다 훨씬 작게 조절 */
     height: auto;
     margin-bottom: 20px; /* 질문 숫자(Q1)와의 간격 */
     display: block;
@@ -105,10 +105,12 @@ body {
 .test-page {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* 상단부터 차례대로 배치 */
+    justify-content: center; /* 다시 상하 정중앙 정렬로 변경 */
     align-items: center;
     min-height: 100vh;
-    padding: 20px; /* 위아래 여백을 적절히 줄임 */
+    background-color: var(--bg-color);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* 질문 컨텐츠 박스 정렬 */
