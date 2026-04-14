@@ -71,7 +71,7 @@ body {
 
 .start-btn {
     font-family: 'Gyeombalbal', sans-serif !important; /* 포인트 폰트 적용 */
-    background-color: var(--button-color) !important;
+    background: var(--primary-color) !important;
     color: var(--text-main) !important;
     width: 80%;
     max-width: 300px;
