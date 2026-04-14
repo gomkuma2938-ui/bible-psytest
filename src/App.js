@@ -99,8 +99,8 @@ const calculateResult = () => {
 
         <div className="result-image">
           <img 
-            src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
-            alt={result.id} 
+            src={process.env.PUBLIC_URL + `/images/${result.image}`} 
+            alt={result.personName} 
             onError={(e) => e.target.style.display='none'} 
           />
         </div>
