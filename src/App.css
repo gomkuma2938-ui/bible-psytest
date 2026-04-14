@@ -282,14 +282,14 @@ body {
     width: 100%;
     max-width: 320px;
     border-radius: 25px;
-    margin-bottom: 40px;
+    margin-bottom: 0px;
     filter: drop-shadow(0 10px 15px rgba(0,0,0,0.08));
 }
 
 /* 🚀 4. 메인 설명 (박스 제거) */
 .main-desc-container {
     padding: 0 10px;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     text-align: center;
 }
 .main-desc-text {
@@ -416,7 +416,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 30px;
+    margin-top: 0px;
     width: 100%;
 }
 
