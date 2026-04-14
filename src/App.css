@@ -135,21 +135,31 @@ body {
 
 .ans-btn {
     width: 100%;
-    padding: 20px;
+    /* 1. 패딩을 더 과감하게 늘립니다 (위아래 35px) */
+    padding: 35px 20px !important; 
     background-color: var(--button-color) !important;
-    color: var(--text-main);
+    color: var(--text-main) !important;
     border: none !important;
-    border-radius: 15px;
+    border-radius: 20px !important; /* 모서리도 더 둥글게 */
     cursor: pointer;
     transition: all 0.2s;
-    line-height: 1.4;
+    
+    /* 2. 줄 간격을 극단적으로 줄여서 글씨가 버튼 중앙에 꽉 차게 합니다 */
+    line-height: 1.0 !important; 
     word-break: keep-all;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08) !important;
 
-    /* ⬇️ [중요] 여기에 !important를 붙여서 다른 설정을 다 무시하게 만듭니다 ⬇️ */
+    /* 3. 폰트 크기를 '4.5rem'까지 올렸습니다. 일반 폰트 기준으로는 말도 안 되게 큰 수치지만, 
+       가느다란 '새음' 폰트에는 이 정도를 줘야 스크린샷의 질문 텍스트와 균형이 맞습니다. */
     font-family: 'GangwonEducationSaeum', sans-serif !important; 
-    font-size: 2.8rem !important; /* 2.5rem은 너무 클 수 있으니 일단 2.2로 찔러보세요 */
+    font-size: 4.5rem !important; 
     font-weight: normal !important;
+
+    /* 4. 버튼 내부에서 글자가 튕겨나가지 않게 정렬 고정 */
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .ans-btn:hover {
