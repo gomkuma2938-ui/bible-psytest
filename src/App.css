@@ -93,12 +93,11 @@ body {
 .test-page {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* center 대신 위에서부터 쌓이도록 변경 */
+    justify-content: center; /* 위아래 정중앙으로 */
     align-items: center;
     min-height: 100vh;
-    height: auto !important; /* 높이 제한 해제 */
     background-color: var(--bg-color);
-    padding: 40px 20px; /* 위아래 여백 확보 */
+    padding: 20px; /* 여백을 조금 줄여서 공간 확보 */
 }
 
 .question-content {
