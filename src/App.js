@@ -176,7 +176,7 @@ const calculateResult = () => {
         <span className="question-number">Q{currentQ.id}</span>
         
         {/* 2. 질문 선택 버튼 */}
-        <div className="answer-buttons">
+        <div className="answer-buttons" key={step}>  {/* <--- 여기에 key={step} 추가! */}
           <button className="ans-btn" onClick={() => handleAnswer('A')}>{currentQ.A}</button>
           <button className="ans-btn" onClick={() => handleAnswer('B')}>{currentQ.B}</button>
         </div>
