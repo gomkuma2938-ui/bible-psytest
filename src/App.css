@@ -91,26 +91,29 @@ body {
 
 /* --- 테스트 페이지 --- */
 
-/* 테스트 페이지 상단 미니 배너 */
-.test-top-banner {
-    width: 100%;
-    max-width: 250px; /* 시작 페이지 이미지보다 작게 조절 */
-    height: auto;
-    margin-bottom: 20px; /* 질문 숫자(Q1)와의 간격 */
-    display: block;
-    opacity: 0.8; /* 살짝 투명하게 해서 질문에 집중하게 할 수도 있음 (선택) */
-}
-
-/* 이미지 추가로 인해 전체가 아래로 밀릴 수 있으므로 패딩 조절 */
 .test-page {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 다시 상하 정중앙 정렬로 변경 */
+    /* 1. 상단 정렬로 변경 (기준점 고정) */
+    justify-content: flex-start; 
     align-items: center;
     min-height: 100vh;
+    
+    /* 2. 화면 상단에서 15% 정도 아래에서 시작하게 설정 (중간 느낌 유도) */
+    padding: 15vh 20px 40px; 
+    
     background-color: var(--bg-color);
-    padding: 20px;
     box-sizing: border-box;
+}
+
+/* 테스트 페이지 상단 미니 배너 */
+.test-top-banner {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    /* 이미지와 질문 번호 사이의 간격을 명확히 고정 */
+    margin-bottom: 30px; 
+    display: block;
 }
 
 /* 질문 컨텐츠 박스 정렬 */
