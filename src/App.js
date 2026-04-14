@@ -11,15 +11,18 @@ function App() {
   const [userAnswers, setUserAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
 
-  const handleAnswer = (choice) => {
-    const newAnswers = [...userAnswers, choice];
-    setUserAnswers(newAnswers);
+const handleAnswer = (choice) => {
+    // 버튼을 누르면 바로 실행되지 않고, 0.25초의 여유를 줍니다.
+    setTimeout(() => {
+      const newAnswers = [...userAnswers, choice];
+      setUserAnswers(newAnswers);
 
-    if (step < surveyData.questions.length - 1) {
-      setStep(step + 1);
-    } else {
-      setShowResult(true);
-    }
+      if (step < surveyData.questions.length - 1) {
+        setStep(step + 1);
+      } else {
+        setShowResult(true);
+      }
+    }, 250); // 250이 0.25초입니다.
   };
 
 const calculateResult = () => {
