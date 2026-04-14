@@ -147,9 +147,16 @@ if (showResult) {
 
   // 3. 테스트 진행 화면
   const currentQ = surveyData.questions[step];
+
   return (
     <div className="container test-page">
-      {/* 질문 콘텐츠 전체를 감싸는 컨테이너 */}
+      {/* 🚀 상단에 작게 보여줄 배너 이미지 추가 */}
+      <img 
+        src={process.env.PUBLIC_URL + '/images/main.png'} 
+        alt="성경 인물 테스트" 
+        className="test-top-banner" 
+      />
+          
       <div className="question-content">
         
         {/* 1. 질문 번호 (Q3) */}
