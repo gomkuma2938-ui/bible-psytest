@@ -1,7 +1,6 @@
 /* 기본 폰트 및 초기화 */
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-/* 폰트 추가 */
 @font-face {
     font-family: 'MitmiFont';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
@@ -9,287 +8,268 @@
     font-display: swap;
 }
 
-
 :root {
-  --primary-color: #fd9f28; /* 진행바 색상 변경 */
-  --bg-color: #fbf9f2;      /* 전체 배경색 변경 */
-  --button-color: #feefc5;  /* 버튼 색상 */
-  --card-bg: #ffffff;
-  --text-main: #333333;
-  --text-sub: #666666;
-  --accent-red: #e24a4a;
+    --primary-color: #fd9f28; /* 진행바 주황색 */
+    --bg-color: #fbf9f2;      /* 전체 배경 아이보리 */
+    --button-color: #feefc5;  /* 버튼 연노랑 */
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-sub: #666666;
+    --accent-red: #e24a4a;
+    --border-color: #eeeeee;
 }
 
 body {
-  background-color: var(--bg-color);
-  margin: 0;
-  font-family: 'Pretendard', sans-serif;
-  color: var(--text-main);
-  -webkit-font-smoothing: antialiased;
+    background-color: var(--bg-color) !important;
+    margin: 0;
+    font-family: 'Pretendard', sans-serif;
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
-  max-width: 500px;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+    max-width: 500px;
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background-color: var(--bg-color); /* 여기서 배경색 확정 */
 }
-
 
 /* --- 메인 페이지 --- */
 .main-page {
-  /* container에서 flex가 이미 선언되어 있으므로, 
-     정렬 속성만 확실히 잡아줍니다. */
-  justify-content: center; 
-  align-items: center;
-  background-color: #ffffff; 
-  text-align: center;
+    justify-content: center; 
+    align-items: center;
+    text-align: center;
+    background-color: var(--bg-color); /* 흰색(#ffffff)이던 부분 수정 */
 }
 
 .main-content {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* 가로가 긴 이미지라면 패딩을 좀 더 여유 있게 */
-  padding: 40px 20px; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px; 
 }
 
 .main-banner-horizontal {
-  width: 100%;
-  max-width: 460px; /* 컨테이너 500px보다 살짝 작게 */
-  height: auto;
-  margin-bottom: 50px; /* 버튼과의 간격 확보 */
-  display: block; /* 인라인 여백 방지 */
+    width: 100%;
+    max-width: 460px;
+    height: auto;
+    margin-bottom: 50px;
+    display: block;
 }
 
 .start-btn {
-  background-color: var(--button-color); /* #feefc5 */
-  color: #333; /* 글자색은 가독성을 위해 어두운색 추천 */
-  font-family: 'MitmiFont', sans-serif; /* 밑미 폰트 적용 */
-  width: 80%; /* 모바일에서 누르기 편하게 */
-  max-width: 300px;
-  padding: 18px 0;
-  background-color: #2d3436; /* 예시 색상 */
-  color: white;
-  font-size: 1.8rem;
-  font-weight: 700;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-family: 'MitmiFont', sans-serif !important;
+    background-color: var(--button-color) !important; /* 노란색 반영 */
+    color: var(--text-main) !important; /* 글자색 검정계열 */
+    width: 80%;
+    max-width: 300px;
+    padding: 18px 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
 }
 
 /* --- 테스트 페이지 --- */
 .test-page {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* 위아래로 분산 배치 */
-  height: 100vh;
-  padding-bottom: 40px; /* 하단 여백 */
-}
-
-/* 질문 텍스트 폰트 적용 */
-.question-text {
-  font-family: 'MitmiFont', sans-serif;
-  font-size: 1.6rem; /* 폰트 특성상 조금 크게 잡는 게 예쁩니다 */
-  word-break: keep-all;
-}
-
-/* 질문 선택 버튼 색상 */
-.ans-btn {
-  background-color: var(--button-color); /* #feefc5 */
-  border: none; /* 테두리 없애는 게 더 깔끔할 수 있습니다 */
-  /* 기존 radius 유지 */
-}
-
-/* 진행바 (하단 고정) */
-.progress-container {
-  order: 2; /* 플렉스 순서를 뒤로 밀어서 하단 배치 */
-  margin-top: 20px;
-  margin-bottom: 10px;
-  background-color: #e0e0e0; 
-}
-
-.progress-bar {
-  background-color: var(--primary-color); /* #fd9f28 */
-}
-
-/* 진행 상황 개수 (개수 표시를 진행바 바로 위나 아래에 배치) */
-.step-indicator {
-  order: 3; /* 진행바보다 더 아래에 배치 */
-  margin-top: 5px;
-  font-weight: bold;
-  text-align: center;
-  color: var(--text-sub);
-  font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    padding-bottom: 40px;
+    background-color: var(--bg-color);
 }
 
 .question-content {
-  text-align: center;
+    text-align: center;
+    margin-top: 60px;
 }
 
 .question-number {
-  font-size: 1.2rem;
-  font-weight: 800;
-  color: var(--primary-color);
-  display: block;
-  margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-family: 'MitmiFont', sans-serif;
+    font-size: 1.8rem;
+    line-height: 1.5;
+    word-break: keep-all;
+    margin-bottom: 40px;
 }
 
 .answer-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .ans-btn {
-  padding: 20px;
-  font-size: 1rem;
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-  line-height: 1.4;
-  word-break: keep-all;
+    width: 100%;
+    padding: 20px;
+    font-size: 1.1rem;
+    background-color: var(--button-color) !important; /* 노란색 반영 */
+    color: var(--text-main);
+    border: none !important;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    line-height: 1.4;
+    word-break: keep-all;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .ans-btn:hover {
-  background: #f0f7ff;
-  border-color: var(--primary-color);
-  transform: translateY(-2px);
+    filter: brightness(0.95);
+    transform: translateY(-2px);
 }
 
-/* --- 결과 페이지 --- */
+/* 하단 진행바 섹션 */
+.progress-container {
+    order: 2; 
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-top: auto; 
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--primary-color) !important; /* 주황색 반영 */
+}
+
+.step-indicator {
+    order: 3;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 1rem;
+}
+
+/* --- 결과 페이지 (기존 스타일 보존) --- */
 .result-page {
-  text-align: center;
-  padding-bottom: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+    background-color: var(--bg-color); /* 배경색 반영 */
 }
 
 .sub-type-label {
-  color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
 }
 
 .summary-badge {
-  background: #f0f7ff;
-  padding: 10px 15px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  color: #444;
-  margin-bottom: 25px;
-  display: inline-block;
+    background: #fff4d8; /* 아이보리에 어울리는 노랑톤으로 수정 */
+    padding: 10px 15px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    color: #444;
+    margin-bottom: 25px;
+    display: inline-block;
 }
 
 .divider {
-  margin: 0 8px;
-  color: #ccc;
+    margin: 0 8px;
+    color: #ccc;
 }
 
 .main-quote {
-  font-size: 1.5rem;
-  font-weight: 800;
-  margin-bottom: 30px;
-  line-height: 1.4;
-  word-break: keep-all;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    word-break: keep-all;
 }
 
 .result-image img {
-  width: 100%;
-  max-width: 280px;
-  border-radius: 20px;
-  margin-bottom: 30px;
+    width: 100%;
+    max-width: 280px;
+    border-radius: 20px;
+    margin-bottom: 30px;
 }
 
 .section-box {
-  text-align: left;
-  background: var(--card-bg);
-  padding: 25px;
-  border-radius: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.type-full-name {
-  font-weight: 800;
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  display: block;
+    text-align: left;
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .main-desc {
-  white-space: pre-wrap;
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #444;
-}
-
-.person-box h3 {
-  margin-top: 0;
-  color: var(--primary-color);
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #444;
 }
 
 .info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .info-card {
-  text-align: left;
-  padding: 20px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-.info-card h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
+    text-align: left;
+    padding: 20px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .feature-card h4 { color: var(--primary-color); }
 .warning-card h4 { color: var(--accent-red); }
 
 .info-card ul {
-  padding-left: 20px;
-  margin: 0;
+    padding-left: 20px;
+    margin: 0;
 }
 
 .info-card li {
-  margin-bottom: 8px;
-  font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
 }
 
 .bible-verse-footer {
-  margin: 40px 0;
-  padding: 20px;
-  border-top: 1px solid var(--border-color);
-  font-style: italic;
-  color: var(--text-sub);
-  font-size: 0.9rem;
-  word-break: keep-all;
+    margin: 40px 0;
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    font-style: italic;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    word-break: keep-all;
 }
 
 .retry-btn {
-  width: 100%;
-  padding: 20px;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 15px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.2s;
-}
-
-.retry-btn:hover {
-  opacity: 0.9;
+    width: 100%;
+    padding: 20px;
+    background: var(--primary-color) !important;
+    font-family: 'MitmiFont', sans-serif !important;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
 }
