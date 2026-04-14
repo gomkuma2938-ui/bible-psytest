@@ -122,7 +122,6 @@ body {
     align-items: center;
 }
 
-
 .question-number {
     font-size: 2.5rem;
     font-weight: 800;
@@ -171,7 +170,7 @@ body {
 
 /* 3. 진행바 (버튼 바로 아래 배치) */
 .progress-container {
-    width: 100%;
+    width: 90%;
     height: 10px;
     background-color: #e0e0e0;
     border-radius: 5px;
