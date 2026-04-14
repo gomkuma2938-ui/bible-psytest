@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "homepage": "https://gomkuma2938-ui.github.io/bible-psytest/",
   "dependencies": {
-      "html2canvas": "^1.4.1",   // <--- 이 줄을 추가하세요! (맨 뒤에 콤마 확인)
+      "html2canvas": "^1.4.1",
       "react": "^18.2.0",
       "react-dom": "^18.2.0",
       "react-scripts": "5.0.1",
