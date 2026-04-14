@@ -120,12 +120,11 @@ function App() {
   const currentQ = surveyData.questions[step];
   return (
     <div className="container test-page">
+      {/* 질문 콘텐츠 전체를 감싸는 컨테이너 */}
       <div className="question-content">
-        {/* 1. 질문 번호 */}
-        <span className="question-number">Q{currentQ.id}</span>
         
-        {/* 질문 텍스트 */}
-        <p className="question-text">{currentQ.question}</p> 
+        {/* 1. 질문 번호 (Q3) */}
+        <span className="question-number">Q{currentQ.id}</span>
         
         {/* 2. 질문 선택 버튼 */}
         <div className="answer-buttons">
@@ -133,13 +132,14 @@ function App() {
           <button className="ans-btn" onClick={() => handleAnswer('B')}>{currentQ.B}</button>
         </div>
   
-        {/* 3. 진행바 */}
+        {/* 3. 진행바 (버튼 아래로 이동) */}
         <div className="progress-container">
           <div className="progress-bar" style={{ width: `${((step + 1) / surveyData.questions.length) * 100}%` }}></div>
         </div>
   
-        {/* 4. 진행도 숫자 */}
+        {/* 4. 진행도 숫자 (3 / 40) */}
         <p className="step-indicator">{step + 1} / {surveyData.questions.length}</p>
+        
       </div>
     </div>
   );
