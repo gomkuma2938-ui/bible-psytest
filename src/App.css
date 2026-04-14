@@ -136,7 +136,7 @@ body {
 .ans-btn {
     width: 100%;
     padding: 20px;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     background-color: var(--button-color) !important; /* 노란색 */
     color: var(--text-main);
     border: none !important;
