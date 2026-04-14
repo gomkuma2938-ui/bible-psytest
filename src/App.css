@@ -72,11 +72,11 @@ body {
 .start-btn {
     font-family: 'Gyeombalbal', sans-serif !important; /* 포인트 폰트 적용 */
     background: var(--primary-color) !important;
-    color: var(--text-main) !important;
+    color: white;
     width: 80%;
     max-width: 300px;
     padding: 18px 0;
-    font-size: 2.2rem; /* 굵은 폰트라 2.2rem이면 아주 시원하게 보일 겁니다 */
+    font-size: 2.0rem; /* 굵은 폰트라 2.2rem이면 아주 시원하게 보일 겁니다 */
     font-weight: normal;
     border-radius: 12px;
     border: none;
@@ -110,7 +110,7 @@ body {
 }
 
 .question-number {
-    font-size: 1.2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--primary-color);
     margin-bottom: 30px; 
@@ -119,7 +119,7 @@ body {
 /* 질문 텍스트 */
 .question-text {
     font-family: 'GangwonEducationSaeum', sans-serif;
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     line-height: 1.4;
     margin-bottom: 40px;
 }
