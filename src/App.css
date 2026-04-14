@@ -8,6 +8,13 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'Gyeombalbal';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/insungitCutelivelyjisu.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
 :root {
     --primary-color: #fd9f28; /* 진행바 주황색 */
     --bg-color: #fbf9f2;      /* 전체 배경 아이보리 */
@@ -63,14 +70,14 @@ body {
 }
 
 .start-btn {
-    font-family: 'GangwonEducationSaeum', sans-serif !important; /* 폰트 변경 */
+    font-family: 'Gyeombalbal', sans-serif !important; /* 포인트 폰트 적용 */
     background-color: var(--button-color) !important;
     color: var(--text-main) !important;
     width: 80%;
     max-width: 300px;
     padding: 18px 0;
-    font-size: 2.2rem; /* 새음 폰트는 얇아서 크기를 살짝 더 키우는 게 예쁩니다 */
-    font-weight: normal; /* 폰트 특성상 굵게 안 해도 예뻐요 */
+    font-size: 2.2rem; /* 굵은 폰트라 2.2rem이면 아주 시원하게 보일 겁니다 */
+    font-weight: normal;
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -273,11 +280,12 @@ body {
     word-break: keep-all;
 }
 
+/* 결과 페이지 다시하기 버튼 */
 .retry-btn {
     width: 100%;
     padding: 20px;
     background: var(--primary-color) !important;
-    font-family: 'GangwonEducationSaeum', sans-serif !important; /* 폰트 변경 */
+    font-family: 'Gyeombalbal', sans-serif !important; /* 포인트 폰트 적용 */
     color: white;
     border: none;
     border-radius: 15px;
