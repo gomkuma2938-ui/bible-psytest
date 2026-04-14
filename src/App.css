@@ -32,30 +32,29 @@ body {
 
 /* --- 메인 페이지 --- */
 .main-page {
-  display: flex;
-  flex-direction: column;
+  /* container에서 flex가 이미 선언되어 있으므로, 
+     정렬 속성만 확실히 잡아줍니다. */
+  justify-content: center; 
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #ffffff; /* 이미지 배경색과 맞춰주세요 */
+  background-color: #ffffff; 
+  text-align: center;
 }
 
 .main-content {
   width: 100%;
-  max-width: 600px; /* 너무 퍼지지 않게 잡아줌 */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
+  /* 가로가 긴 이미지라면 패딩을 좀 더 여유 있게 */
+  padding: 40px 20px; 
 }
 
 .main-banner-horizontal {
   width: 100%;
+  max-width: 460px; /* 컨테이너 500px보다 살짝 작게 */
   height: auto;
-  /* 세로가 짧으므로 여백을 조금 더 줘서 시선을 모아줍니다 */
-  margin-top: -50px; 
-  margin-bottom: 40px;
-  object-fit: contain;
+  margin-bottom: 50px; /* 버튼과의 간격 확보 */
+  display: block; /* 인라인 여백 방지 */
 }
 
 .start-btn {
