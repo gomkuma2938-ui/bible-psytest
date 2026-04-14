@@ -87,8 +87,8 @@ const calculateResult = () => {
   };
   
 // 1. 결과 화면
-if (showResult) {
-    // 1. 모든 동점자 찾기
+  if (showResult) {
+    // 동점자 계산 로직
     const scores = { paul: 0, timothy: 0, hannah: 0, nehemiah: 0, david: 0, barnabas: 0, abraham: 0, elijah: 0, ezra: 0, tabitha: 0 };
     userAnswers.forEach((choice, index) => {
       const type = surveyData.scoreMap[`${index + 1}${choice}`];
@@ -97,61 +97,61 @@ if (showResult) {
     const maxScore = Math.max(...Object.values(scores));
     const winners = Object.keys(scores).filter(key => scores[key] === maxScore);
     
-    // 2. 현재 선택된 인물의 데이터 가져오기
+    // 현재 보고 있는 인물 데이터
     const result = resultsData[viewId || winners[0]];
     const handleRetry = () => window.location.reload();
 
     return (
       <div className="container result-page">
-        <div className="result-header">
-          {/* 🚀 동점자 전환 버튼 (2명 이상일 때만 표시) */}
-          {winners.length > 1 && (
-            <div className="winner-tabs">
-              <p style={{fontSize: '0.8rem', color: '#888', marginBottom: '8px'}}>공동 1위 성향이 있어요! 클릭해서 확인해보세요.</p>
-              <div style={{display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '20px'}}>
-                {winners.map(id => (
-                  <button 
-                    key={id}
-                    onClick={() => setViewId(id)}
-                    className={`tab-btn ${viewId === id ? 'active' : ''}`}
-                    style={{
-                      padding: '8px 16px',
-                      borderRadius: '20px',
-                      border: viewId === id ? 'none' : '1px solid #ddd',
-                      backgroundColor: viewId === id ? 'var(--primary-color)' : 'white',
-                      color: viewId === id ? 'white' : '#666',
-                      cursor: 'pointer',
-                      fontSize: '0.9rem',
-                      fontWeight: 'bold'
-                    }}
-                  >
-                    {resultsData[id].personName}
-                  </button>
-                ))}
-              </div>
+        {/* 🚀 동점자 전환 탭 (기존 기능 유지) */}
+        {winners.length > 1 && (
+          <div className="winner-tabs">
+            <p className="tab-guide">공동 1위 성향이 있어요! 클릭해서 확인해보세요.</p>
+            <div className="tab-container">
+              {winners.map(id => (
+                <button 
+                  key={id}
+                  onClick={() => setViewId(id)}
+                  className={`tab-btn ${viewId === id ? 'active' : ''}`}
+                >
+                  {resultsData[id].personName}
+                </button>
+              ))}
             </div>
-          )}
-
-          <p className="sub-type-label">{result.type}</p> 
-          <div className="summary-badge">
-            <span><strong>대표인물:</strong> {result.personName}</span>
-            <span className="divider">|</span>
-            <span><strong>강점:</strong> {result.strengths}</span>
           </div>
+        )}
+
+        <div className="result-header">
+          {/* 1. 타입 (main-quote 크기로 키움) */}
+          <p className="sub-type-label">{result.type}</p> 
+          
+          {/* 2. 인물 이름 (타입보다 약간 더 크게) */}
+          <h2 className="result-person-name">{result.personName}</h2>
+
+          {/* 3. 인용구 (Gyeombalbal 폰트 적용 및 크기 축소) */}
           <h1 className="main-quote">"{result.quote}"</h1>
         </div>
 
-        {/* 이미지, 상세 설명 등은 기존과 동일하게 result 변수를 사용하므로 그대로 유지됩니다 */}
         <div className="result-image">
           <img src={process.env.PUBLIC_URL + `/images/${result.image}`} alt={result.id} />
         </div>
 
-        <div className="section-box desc-box">
-          <p className="main-desc">{result.desc}</p>
+        {/* 4. 메인 설명 (박스 제거, 배경에 바로 띄움) */}
+        <div className="main-desc-container">
+          <p className="main-desc-text">{result.desc}</p>
         </div>
 
-        <div className="section-box person-box">
-          <p>{result.personDesc}</p>
+        {/* 5. 강점 (설명과 퍼슨 박스 사이) */}
+        <div className="strengths-section">
+          <span className="strengths-label">강점</span>
+          <span className="strengths-content">{result.strengths}</span>
+        </div>
+
+        {/* 6. 퍼슨 박스 (네이버 블로그 꺽쇠 스타일) */}
+        <div className="person-quote-box">
+          <span className="bracket-open">『</span>
+          <p className="person-desc-text">{result.personDesc}</p>
+          <span className="bracket-close">』</span>
         </div>
 
         <div className="info-grid">
