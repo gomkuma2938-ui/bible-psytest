@@ -94,7 +94,7 @@ body {
 /* 테스트 페이지 상단 미니 배너 */
 .test-top-banner {
     width: 100%;
-    max-width: 200px; /* 시작 페이지 이미지보다 훨씬 작게 조절 */
+    max-width: 250px; /* 시작 페이지 이미지보다 작게 조절 */
     height: auto;
     margin-bottom: 20px; /* 질문 숫자(Q1)와의 간격 */
     display: block;
