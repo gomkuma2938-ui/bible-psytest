@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import html2canvas from 'html2canvas';
 import surveyData from './data/questions.json';
 import resultsData from './data/results.json';
 import './App.css';
+
 
 function App() {
   const [isStarted, setIsStarted] = useState(false);
@@ -40,63 +42,90 @@ function App() {
     return resultsData[winnerKey];
   };
 
+  const saveAsImage = async () => {
+    const target = document.querySelector(".result-page"); // 결과 영역 선택
+    if (!target) return;
+  
+    try {
+      const canvas = await html2canvas(target, {
+        useCORS: true, // 외부 이미지(결과 캐릭터 등) 허용
+        backgroundColor: "#fbf9f2", // 아이보리 배경색 강제 지정
+        scale: 2, // 고해상도 저장을 위해 2배 확대
+      });
+  
+      const image = canvas.toDataURL("image/jpeg", 0.9);
+      const link = document.createElement("a");
+      link.download = "test-result.jpg";
+      link.href = image;
+      link.click();
+    } catch (error) {
+      console.error("이미지 저장 실패:", error);
+      alert("이미지 저장 중 오류가 발생했습니다.");
+    }
+  };
+  
   // 1. 결과 화면
-  if (showResult) {
-    const result = calculateResult();
-    return (
-      <div className="container result-page">
-        <div className="result-header">
-          <p className="sub-type-label">{result.type}</p> 
-          <div className="summary-badge">
-            <span><strong>대표인물:</strong> {result.personName}</span>
-            <span className="divider">|</span>
-            <span><strong>강점:</strong> {result.strengths}</span>
-          </div>
-          <h1 className="main-quote">"{result.quote}"</h1>
-        </div>
+if (showResult) {
+  const result = calculateResult();
+  
+  // 리로딩 함수 (다시하기용)
+  const handleRetry = () => window.location.reload();
 
-        <div className="result-image">
-          {/* public/images에 있는 인물 이미지를 불러옵니다 */}
-          <img 
-            src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
-            alt={result.id} 
-            onError={(e) => e.target.style.display='none'} 
-          />
+  return (
+    <div className="container result-page">
+      <div className="result-header">
+        <p className="sub-type-label">{result.type}</p> 
+        <div className="summary-badge">
+          <span><strong>대표인물:</strong> {result.personName}</span>
+          <span className="divider">|</span>
+          <span><strong>강점:</strong> {result.strengths}</span>
         </div>
-
-        <div className="section-box desc-box">
-          <p className="main-desc">{result.desc}</p>
-        </div>
-
-        <div className="section-box person-box">
-          <p>{result.personDesc}</p>
-        </div>
-
-        <div className="info-grid">
-          <div className="info-card feature-card">
-            <h4>당신의 특징</h4>
-            <ul>
-              {result.features.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
-          </div>
-          <div className="info-card warning-card">
-            <h4>주의할 점:</h4>
-            <ul>
-              {result.warnings.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
-          </div>
-        </div>
-
-        <div className="bible-verse-footer">
-          <p>{result.verse}</p>
-        </div>
-
-        <button className="retry-btn" onClick={() => window.location.reload()}>
-          테스트 다시하기
-        </button>
+        <h1 className="main-quote">"{result.quote}"</h1>
       </div>
-    );
-  }
+
+      <div className="result-image">
+        <img 
+          src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
+          alt={result.id} 
+          onError={(e) => e.target.style.display='none'} 
+        />
+      </div>
+
+      <div className="section-box desc-box">
+        <p className="main-desc">{result.desc}</p>
+      </div>
+
+      <div className="section-box person-box">
+        <p>{result.personDesc}</p>
+      </div>
+
+      <div className="info-grid">
+        <div className="info-card feature-card">
+          <h4>당신의 특징</h4>
+          <ul>
+            {result.features.map((item, i) => <li key={i}>{item}</li>)}
+          </ul>
+        </div>
+        <div className="info-card warning-card">
+          <h4>주의할 점:</h4>
+          <ul>
+            {result.warnings.map((item, i) => <li key={i}>{item}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      <div className="bible-verse-footer">
+        <p>{result.verse}</p>
+      </div>
+
+      {/* 🚀 버튼 그룹: 이미지 저장 버튼을 위로, 다시하기를 아래로 배치 */}
+      <div className="result-actions">
+          <button className="save-btn" onClick={saveAsImage}>이미지로 저장</button>
+          <button className="retry-btn" onClick={handleRetry}>다시하기</button>
+      </div>
+    </div>
+  );
+}
 
   // 2. 메인 화면 (public/images/main.png 사용)
   if (!isStarted) {
