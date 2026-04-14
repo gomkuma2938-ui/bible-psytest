@@ -2,8 +2,8 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
 @font-face {
-    font-family: 'MitmiFont';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2402_1@1.0/Ownglyph_meetme-Rg.woff2') format('woff2');
+    font-family: 'GangwonEducationSaeum';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduSaeeum_OTFMediumA.woff') format('woff');
     font-weight: normal;
     font-display: swap;
 }
@@ -63,14 +63,14 @@ body {
 }
 
 .start-btn {
-    font-family: 'MitmiFont', sans-serif !important;
-    background-color: var(--button-color) !important; /* 노란색 반영 */
-    color: var(--text-main) !important; /* 글자색 검정계열 */
+    font-family: 'GangwonEducationSaeum', sans-serif !important; /* 폰트 변경 */
+    background-color: var(--button-color) !important;
+    color: var(--text-main) !important;
     width: 80%;
     max-width: 300px;
     padding: 18px 0;
-    font-size: 1.8rem;
-    font-weight: 700;
+    font-size: 2.2rem; /* 새음 폰트는 얇아서 크기를 살짝 더 키우는 게 예쁩니다 */
+    font-weight: normal; /* 폰트 특성상 굵게 안 해도 예뻐요 */
     border-radius: 12px;
     border: none;
     cursor: pointer;
@@ -106,9 +106,9 @@ body {
 }
 
 .question-text {
-    font-family: 'MitmiFont', sans-serif;
-    font-size: 1.8rem;
-    line-height: 1.5;
+    font-family: 'GangwonEducationSaeum', sans-serif; /* 폰트 변경 */
+    font-size: 2.2rem; /* 얇은 폰트라 시원하게 키웠습니다 */
+    line-height: 1.4;
     word-break: keep-all;
     margin-bottom: 40px;
 }
@@ -265,11 +265,11 @@ body {
     width: 100%;
     padding: 20px;
     background: var(--primary-color) !important;
-    font-family: 'MitmiFont', sans-serif !important;
+    font-family: 'GangwonEducationSaeum', sans-serif !important; /* 폰트 변경 */
     color: white;
     border: none;
     border-radius: 15px;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: normal;
     cursor: pointer;
 }
