@@ -22,7 +22,7 @@ function App() {
     }
   };
 
-  const calculateResult = () => {
+const calculateResult = () => {
     const scores = {
       paul: 0, timothy: 0, hannah: 0, nehemiah: 0, david: 0,
       barnabas: 0, abraham: 0, elijah: 0, ezra: 0, tabitha: 0
@@ -35,11 +35,20 @@ function App() {
       if (type) scores[type] += 1;
     });
 
-    const winnerKey = Object.keys(scores).reduce((a, b) => 
-      scores[a] >= scores[b] ? a : b
-    );
+    // 최고 점수가 몇 점인지 찾기
+    const maxScore = Math.max(...Object.values(scores));
     
-    return resultsData[winnerKey];
+    // 최고 점수를 받은 모든 인물들의 키(id)를 찾기
+    const winners = Object.keys(scores).filter(key => scores[key] === maxScore);
+    
+    // 첫 번째 인물을 메인 결과로 가져오기
+    const mainResult = { ...resultsData[winners[0]] };
+    
+    // 만약 동점자가 있다면, 메인 결과 외의 사람 이름을 따로 저장하기
+    const otherNames = winners.slice(1).map(key => resultsData[key].personName);
+    mainResult.others = otherNames; // 결과 객체에 동점자 이름 리스트 추가
+    
+    return mainResult;
   };
 
   const saveAsImage = async () => {
@@ -64,68 +73,72 @@ function App() {
     }
   };
   
-  // 1. 결과 화면
-if (showResult) {
-  const result = calculateResult();
-  
-  // 리로딩 함수 (다시하기용)
-  const handleRetry = () => window.location.reload();
+// 1. 결과 화면
+  if (showResult) {
+    const result = calculateResult();
+    const handleRetry = () => window.location.reload();
 
-  return (
-    <div className="container result-page">
-      <div className="result-header">
-        <p className="sub-type-label">{result.type}</p> 
-        <div className="summary-badge">
-          <span><strong>대표인물:</strong> {result.personName}</span>
-          <span className="divider">|</span>
-          <span><strong>강점:</strong> {result.strengths}</span>
+    return (
+      <div className="container result-page">
+        <div className="result-header">
+          <p className="sub-type-label">{result.type}</p> 
+          <div className="summary-badge">
+            <span><strong>대표인물:</strong> {result.personName}</span>
+            <span className="divider">|</span>
+            <span><strong>강점:</strong> {result.strengths}</span>
+          </div>
+          <h1 className="main-quote">"{result.quote}"</h1>
+
+          {/* 🚀 동점자가 있을 때만 보여주는 안내 문구 */}
+          {result.others && result.others.length > 0 && (
+            <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '20px', fontStyle: 'italic' }}>
+              * 나와 비슷한 또 다른 인물: {result.others.join(", ")}
+            </div>
+          )}
         </div>
-        <h1 className="main-quote">"{result.quote}"</h1>
-      </div>
 
-      <div className="result-image">
-        <img 
-          src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
-          alt={result.id} 
-          onError={(e) => e.target.style.display='none'} 
-        />
-      </div>
-
-      <div className="section-box desc-box">
-        <p className="main-desc">{result.desc}</p>
-      </div>
-
-      <div className="section-box person-box">
-        <p>{result.personDesc}</p>
-      </div>
-
-      <div className="info-grid">
-        <div className="info-card feature-card">
-          <h4>당신의 특징</h4>
-          <ul>
-            {result.features.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
+        <div className="result-image">
+          <img 
+            src={process.env.PUBLIC_URL + `/images/${result.id}.png`} 
+            alt={result.id} 
+            onError={(e) => e.target.style.display='none'} 
+          />
         </div>
-        <div className="info-card warning-card">
-          <h4>주의할 점:</h4>
-          <ul>
-            {result.warnings.map((item, i) => <li key={i}>{item}</li>)}
-          </ul>
+
+        <div className="section-box desc-box">
+          <p className="main-desc">{result.desc}</p>
+        </div>
+
+        <div className="section-box person-box">
+          <p>{result.personDesc}</p>
+        </div>
+
+        <div className="info-grid">
+          <div className="info-card feature-card">
+            <h4>당신의 특징</h4>
+            <ul>
+              {result.features.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          </div>
+          <div className="info-card warning-card">
+            <h4>주의할 점:</h4>
+            <ul>
+              {result.warnings.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <div className="bible-verse-footer">
+          <p>{result.verse}</p>
+        </div>
+
+        <div className="result-actions">
+            <button className="save-btn" onClick={saveAsImage}>이미지로 저장</button>
+            <button className="retry-btn" onClick={handleRetry}>다시하기</button>
         </div>
       </div>
-
-      <div className="bible-verse-footer">
-        <p>{result.verse}</p>
-      </div>
-
-      {/* 🚀 버튼 그룹: 이미지 저장 버튼을 위로, 다시하기를 아래로 배치 */}
-      <div className="result-actions">
-          <button className="save-btn" onClick={saveAsImage}>이미지로 저장</button>
-          <button className="retry-btn" onClick={handleRetry}>다시하기</button>
-      </div>
-    </div>
-  );
-}
+    );
+  }
 
   // 2. 메인 화면 (public/images/main.png 사용)
   if (!isStarted) {
