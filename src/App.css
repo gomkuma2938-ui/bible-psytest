@@ -148,7 +148,7 @@ body {
 
     /* ⬇️ [중요] 여기에 !important를 붙여서 다른 설정을 다 무시하게 만듭니다 ⬇️ */
     font-family: 'GangwonEducationSaeum', sans-serif !important; 
-    font-size: 2.2rem !important; /* 2.5rem은 너무 클 수 있으니 일단 2.2로 찔러보세요 */
+    font-size: 2.8rem !important; /* 2.5rem은 너무 클 수 있으니 일단 2.2로 찔러보세요 */
     font-weight: normal !important;
 }
 
