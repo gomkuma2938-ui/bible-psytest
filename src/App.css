@@ -100,7 +100,7 @@ body {
     min-height: 100vh;
     
     /* 2. 화면 상단에서 15% 정도 아래에서 시작하게 설정 (중간 느낌 유도) */
-    padding: 15vh 20px 40px; 
+    padding: 7vh 20px 40px; 
     
     background-color: var(--bg-color);
     box-sizing: border-box;
