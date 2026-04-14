@@ -93,20 +93,21 @@ body {
 .test-page {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 수직 중앙 정렬 */
+    justify-content: flex-start; /* center 대신 위에서부터 쌓이도록 변경 */
     align-items: center;
     min-height: 100vh;
+    height: auto !important; /* 높이 제한 해제 */
     background-color: var(--bg-color);
-    padding: 20px;
+    padding: 40px 20px; /* 위아래 여백 확보 */
 }
 
 .question-content {
     width: 100%;
     max-width: 400px;
+    height: auto !important; /* 높이 제한 해제 */
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
 }
 
 .question-number {
