@@ -10,9 +10,9 @@ function App() {
   const [step, setStep] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const [showResult, setShowResult] = useState(false);
+  const [viewId, setViewId] = useState(null); // 현재 보고 있는 결과 캐릭터 ID
 
 const handleAnswer = (choice) => {
-    // 버튼을 누르면 바로 실행되지 않고, 0.25초의 여유를 줍니다.
     setTimeout(() => {
       const newAnswers = [...userAnswers, choice];
       setUserAnswers(newAnswers);
@@ -20,9 +20,19 @@ const handleAnswer = (choice) => {
       if (step < surveyData.questions.length - 1) {
         setStep(step + 1);
       } else {
+        // 결과 계산 후 첫 번째 승자를 기본 뷰로 설정
+        const scores = { paul: 0, timothy: 0, hannah: 0, nehemiah: 0, david: 0, barnabas: 0, abraham: 0, elijah: 0, ezra: 0, tabitha: 0 };
+        newAnswers.forEach((c, i) => {
+          const type = surveyData.scoreMap[`${i + 1}${c}`];
+          if (type) scores[type] += 1;
+        });
+        const maxScore = Math.max(...Object.values(scores));
+        const winners = Object.keys(scores).filter(key => scores[key] === maxScore);
+        
+        setViewId(winners[0]); // 첫 번째 동점자를 먼저 보여줌
         setShowResult(true);
       }
-    }, 250); // 250이 0.25초입니다.
+    }, 250);
   };
 
 const calculateResult = () => {
@@ -77,13 +87,51 @@ const calculateResult = () => {
   };
   
 // 1. 결과 화면
-  if (showResult) {
-    const result = calculateResult();
+if (showResult) {
+    // 1. 모든 동점자 찾기
+    const scores = { paul: 0, timothy: 0, hannah: 0, nehemiah: 0, david: 0, barnabas: 0, abraham: 0, elijah: 0, ezra: 0, tabitha: 0 };
+    userAnswers.forEach((choice, index) => {
+      const type = surveyData.scoreMap[`${index + 1}${choice}`];
+      if (type) scores[type] += 1;
+    });
+    const maxScore = Math.max(...Object.values(scores));
+    const winners = Object.keys(scores).filter(key => scores[key] === maxScore);
+    
+    // 2. 현재 선택된 인물의 데이터 가져오기
+    const result = resultsData[viewId || winners[0]];
     const handleRetry = () => window.location.reload();
 
     return (
       <div className="container result-page">
         <div className="result-header">
+          {/* 🚀 동점자 전환 버튼 (2명 이상일 때만 표시) */}
+          {winners.length > 1 && (
+            <div className="winner-tabs">
+              <p style={{fontSize: '0.8rem', color: '#888', marginBottom: '8px'}}>공동 1위 성향이 있어요! 클릭해서 확인해보세요.</p>
+              <div style={{display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '20px'}}>
+                {winners.map(id => (
+                  <button 
+                    key={id}
+                    onClick={() => setViewId(id)}
+                    className={`tab-btn ${viewId === id ? 'active' : ''}`}
+                    style={{
+                      padding: '8px 16px',
+                      borderRadius: '20px',
+                      border: viewId === id ? 'none' : '1px solid #ddd',
+                      backgroundColor: viewId === id ? 'var(--primary-color)' : 'white',
+                      color: viewId === id ? 'white' : '#666',
+                      cursor: 'pointer',
+                      fontSize: '0.9rem',
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    {resultsData[id].personName}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           <p className="sub-type-label">{result.type}</p> 
           <div className="summary-badge">
             <span><strong>대표인물:</strong> {result.personName}</span>
@@ -91,21 +139,11 @@ const calculateResult = () => {
             <span><strong>강점:</strong> {result.strengths}</span>
           </div>
           <h1 className="main-quote">"{result.quote}"</h1>
-
-          {/* 🚀 동점자가 있을 때만 보여주는 안내 문구 */}
-          {result.others && result.others.length > 0 && (
-            <div style={{ fontSize: '0.85rem', color: '#888', marginBottom: '20px', fontStyle: 'italic' }}>
-              * 나와 비슷한 또 다른 인물: {result.others.join(", ")}
-            </div>
-          )}
         </div>
 
+        {/* 이미지, 상세 설명 등은 기존과 동일하게 result 변수를 사용하므로 그대로 유지됩니다 */}
         <div className="result-image">
-          <img 
-            src={process.env.PUBLIC_URL + `/images/${result.image}`} 
-            alt={result.personName} 
-            onError={(e) => e.target.style.display='none'} 
-          />
+          <img src={process.env.PUBLIC_URL + `/images/${result.image}`} alt={result.id} />
         </div>
 
         <div className="section-box desc-box">
@@ -119,21 +157,15 @@ const calculateResult = () => {
         <div className="info-grid">
           <div className="info-card feature-card">
             <h4>당신의 특징</h4>
-            <ul>
-              {result.features.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
+            <ul>{result.features.map((item, i) => <li key={i}>{item}</li>)}</ul>
           </div>
           <div className="info-card warning-card">
             <h4>주의할 점:</h4>
-            <ul>
-              {result.warnings.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
+            <ul>{result.warnings.map((item, i) => <li key={i}>{item}</li>)}</ul>
           </div>
         </div>
 
-        <div className="bible-verse-footer">
-          <p>{result.verse}</p>
-        </div>
+        <div className="bible-verse-footer"><p>{result.verse}</p></div>
 
         <div className="result-actions">
             <button className="save-btn" onClick={saveAsImage}>이미지로 저장</button>
