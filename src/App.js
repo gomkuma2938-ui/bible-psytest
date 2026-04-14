@@ -109,7 +109,7 @@ function App() {
             className="main-banner-horizontal" 
           />
           <button className="start-btn" onClick={() => setIsStarted(true)}>
-            테스트 시작하기
+            START
           </button>
         </div>
       </div>
