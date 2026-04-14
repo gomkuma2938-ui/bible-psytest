@@ -1,6 +1,7 @@
 {
   "paul": {
     "id": "paul",
+    "image": "paul.png",
     "type": "비전추구형 (소명리더형)",
     "personName": "바울",
     "strengths": "리더십, 기획력, 전략적사고",
@@ -10,7 +11,7 @@
     "features": [
       "말씀 안에서 길을 찾고, 방향을 결정하는 리더",
       "사람들을 이끌고, 프로젝트를 만들어가는 추진력",
-      "'이게 하나님 나라에 무슨 의미가 있지?'를 늘 고민"
+      " '이게 하나님 나라에 무슨 의미가 있지?'를 늘 고민"
     ],
     "warnings": [
       "사람보다 일, 사명에 몰두할 수 있음 → 관계 균형 필요",
@@ -20,6 +21,7 @@
   },
   "timothy": {
     "id": "timothy",
+    "image": "timothy.png",
     "type": "말씀전달형 (진리교사형)",
     "personName": "디모데",
     "strengths": "논리력, 설득력, 성경지식",
@@ -33,12 +35,13 @@
     ],
     "warnings": [
       "말씀을 가르치기 전에 삶으로 먼저 살아낼 것",
-      "'전하는 일'이 '들을 귀'를 이기는 일이 되지 않게"
+      " '전하는 일'이 '들을 귀'를 이기는 일이 되지 않게"
     ],
     "verse": "너는 말씀을 전파하라 때를 얻든지 못 얻든지 항상 힘쓰라 범사에 오래 참음과 가르침으로 경책하며 경계하며 권하라 (디모데후서 4:2)"
   },
   "hannah": {
     "id": "hannah",
+    "image": "hannah.png",
     "type": "기도집중형 (중보자형)",
     "personName": "한나",
     "strengths": "분별력, 영성, 영적 민감함",
@@ -58,6 +61,7 @@
   },
   "nehemiah": {
     "id": "nehemiah",
+    "image": "nehemiah.png",
     "type": "실천봉사형 (현장 헌신자형)",
     "personName": "느헤미야",
     "strengths": "실행력, 책임감, 헌신",
@@ -77,6 +81,7 @@
   },
   "david": {
     "id": "david",
+    "image": "david.png",
     "type": "창의표현형 (영적 아티스트형)",
     "personName": "다윗",
     "strengths": "창의성, 감성, 예술적 재능",
@@ -96,6 +101,7 @@
   },
   "barnabas": {
     "id": "barnabas",
+    "image": "barnabas.png",
     "type": "관계중심형 (공동체 서포터형)",
     "personName": "바나바",
     "strengths": "공감력, 친화력, 안정감",
@@ -115,6 +121,7 @@
   },
   "abraham": {
     "id": "abraham",
+    "image": "abraham.png",
     "type": "선교개척형 (복음의 개척자형)",
     "personName": "아브라함",
     "strengths": "도전정신, 개척력, 전도 열정",
@@ -134,6 +141,7 @@
   },
   "elijah": {
     "id": "elijah",
+    "image": "elijah.png",
     "type": "예언직관형 (하나님 감지자형)",
     "personName": "엘리야",
     "strengths": "통찰력, 영감, 선포능력",
@@ -153,6 +161,7 @@
   },
   "ezra": {
     "id": "ezra",
+    "image": "ezra.png",
     "type": "성경탐구형 (말씀 연구자형)",
     "personName": "에스라",
     "strengths": "집중력, 논리적 사고, 탐구심",
@@ -172,6 +181,7 @@
   },
   "tabitha": {
     "id": "tabitha",
+    "image": "tabitha.png",
     "type": "사랑실천형 (자비 행위자형)",
     "personName": "다비다 (도르가)",
     "strengths": "자비, 나눔, 실천적 사랑",
