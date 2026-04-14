@@ -125,7 +125,7 @@ body {
     margin-bottom: 50px !important; /* 진행바와 50px 간격 확보 */
 }
 
-button.ans-btn {
+.ans-btn {
     /* 1. 글자 크기를 파격적으로 키웁니다 (이 정도는 되어야 보입니다) */
     font-size: 2.2rem !important; 
     
